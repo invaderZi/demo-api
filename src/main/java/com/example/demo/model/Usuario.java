@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import java.util.Objects;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,14 +14,14 @@ public class Usuario {
     private Long id;
 
 
-	private boolean isAdmin;
+	private Boolean isAdmin;
     private String name;
     private String email;
 
     
      public Usuario() {}
      
-     public Usuario(boolean isAdmin, String name, String email) {
+     public Usuario(Boolean isAdmin, String name, String email) {
  		super();
  		this.isAdmin = isAdmin;
  		this.name = name;
@@ -37,11 +36,11 @@ public class Usuario {
 		this.id = id;
 	}
 
-	public boolean isAdmin() {
+	public Boolean isAdmin() {
 		return isAdmin;
 	}
 
-	public void setAdmin(boolean isAdmin) {
+	public void setAdmin(Boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
 
