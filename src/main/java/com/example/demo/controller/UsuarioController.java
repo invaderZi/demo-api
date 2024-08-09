@@ -1,6 +1,8 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.demo.model.Usuario;
@@ -16,22 +18,32 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
-    public List<Usuario> listarTodos() {
-        return usuarioService.listarTodos();
+    public ResponseEntity<List<Usuario>> listarTodos() {
+        List<Usuario> usuarios = usuarioService.listarTodos();
+        return ResponseEntity.status(HttpStatus.OK).body(usuarios); 
     }
 
     @PostMapping
-    public Usuario criarUsuario(@RequestBody Usuario usuario) {
-        return usuarioService.salvar(usuario);
+    public ResponseEntity<Usuario> criarUsuario(@RequestBody Usuario usuario) {
+        Usuario novoUsuario =  usuarioService.salvar(usuario);
+        return ResponseEntity.status(HttpStatus.CREATED).body(novoUsuario);
+    }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable Long id,  @RequestBody Usuario usuario) {
+        Usuario usuarioAtualizado = usuarioService.atualizar(id, usuario);
+        return ResponseEntity.ok(usuarioAtualizado);
     }
 
     @GetMapping("/{id}")
-    public Usuario buscarPorId(@PathVariable Long id) {
-        return usuarioService.buscarPorId(id);
+    public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
+        Usuario usuarioEncontrado =  usuarioService.buscarPorId(id);
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioEncontrado);
     }
 
     @DeleteMapping("/{id}")
-    public void deletarUsuario(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {
         usuarioService.deletar(id);
+        return ResponseEntity.noContent().build();
     }
 }
