@@ -1,12 +1,12 @@
-package com.example.demo.controller;
+package com.zetalabs.mood.app.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.demo.model.Usuario;
-import com.example.demo.service.UsuarioService;
+import com.zetalabs.mood.app.model.Usuario;
+import com.zetalabs.mood.app.service.UsuarioService;
 
 import java.util.List;
 
@@ -40,6 +40,13 @@ public class UsuarioController {
         Usuario usuarioEncontrado =  usuarioService.buscarPorId(id);
         return ResponseEntity.status(HttpStatus.OK).body(usuarioEncontrado);
     }
+    
+    @GetMapping("/username/{username}")
+    public ResponseEntity<Usuario> buscarPorUsername(@PathVariable String username) {
+        Usuario usuarioEncontrado =  usuarioService.buscarPorUsername(username);
+        return ResponseEntity.status(HttpStatus.OK).body(usuarioEncontrado);
+    }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarUsuario(@PathVariable Long id) {

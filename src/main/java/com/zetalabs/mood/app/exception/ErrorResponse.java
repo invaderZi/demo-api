@@ -1,4 +1,4 @@
-package com.example.demo.exception;
+package com.zetalabs.mood.app.exception;
 
 public class ErrorResponse {
     private int status;

@@ -8,11 +8,11 @@
 		<version>3.3.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo-api</artifactId>
+	<groupId>com.zetalabs</groupId>
+	<artifactId>mood-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo-api</name>
-	<description>Demo project for Spring Boot</description>
+	<name>mood-api</name>
+	<description>Mood Api</description>
 	<url/>
 	<licenses>
 		<license/>

@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.zetalabs.mood.app.config;
 
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.context.annotation.Bean;

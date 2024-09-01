@@ -11,10 +11,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.example.demo.exception.EmailJaExistenteException;
-import com.example.demo.exception.UsuarioNaoEncontradoException;
-import com.example.demo.model.Usuario;
-import com.example.demo.repository.UsuarioRepository;
+import com.zetalabs.mood.app.exception.usuario.EmailJaExistenteException;
+import com.zetalabs.mood.app.exception.usuario.UsuarioNaoEncontradoException;
+import com.zetalabs.mood.app.model.Usuario;
+import com.zetalabs.mood.app.repository.UsuarioRepository;
+import com.zetalabs.mood.app.service.UsuarioService;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.demo.exception;
+package com.zetalabs.mood.app.exception.usuario;
 
 public class UsuarioNaoEncontradoException extends RuntimeException {
     /**

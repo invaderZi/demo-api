@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.zetalabs.mood.app.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "<h1>demo-api</h1>";
+        return "<h1>muuud-api</h1>";
     }
 }
