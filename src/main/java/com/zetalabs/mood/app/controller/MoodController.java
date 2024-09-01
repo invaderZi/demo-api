@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,12 @@ public class MoodController {
 		Mood novoMood = moodService.salvar(mood);
 		return ResponseEntity.status(HttpStatus.CREATED).body(novoMood);
 	}
+	
+	@GetMapping("/user/{userId}")
+    public ResponseEntity<List<Mood>> getMoodsByUserId(@PathVariable Long userId) {
+        List<Mood> moods = moodService.getMoodsByUserId(userId);
+        return ResponseEntity.ok(moods);
+    }
 	
 
 }

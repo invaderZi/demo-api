@@ -1,6 +1,7 @@
 package com.zetalabs.mood.app.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,11 @@ public class MoodService {
 		return moodRepository.save(mood);
 		
 	}
+	
+   public List<Mood> getMoodsByUserId(Long userId) {
+	        List<Mood> moods = moodRepository.findByUserId(userId);
+	        return moods.stream().collect(Collectors.toList());
+	    }
 	
 	
 }
