@@ -5,16 +5,15 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
-@Table(name = "moods")
+@Table(name = "mood")
 public class Mood {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    private Usuario user;
+    @Column(name = "user_id")
+    private Long userId;
 
     @Column(nullable = false)
     private int humor;
@@ -46,12 +45,17 @@ public class Mood {
     @Column(nullable = false)
     private LocalDateTime timestamp;
     
+    @PrePersist
+    protected void onCreate() {
+        this.timestamp = LocalDateTime.now();
+    }
+    
 	public Mood() {}
 
-	public Mood(Usuario user, int humor, int fome, int tedio, int fisica, int emocional, int falar, int ouvir,
+	public Mood(Long userId, int humor, int fome, int tedio, int fisica, int emocional, int falar, int ouvir,
 			int companhia, String recado, LocalDateTime timestamp) {
 		super();
-		this.user = user;
+		this.userId = userId;
 		this.humor = humor;
 		this.fome = fome;
 		this.tedio = tedio;
@@ -72,12 +76,12 @@ public class Mood {
 		this.id = id;
 	}
 
-	public Usuario getUser() {
-		return user;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setUser(Usuario user) {
-		this.user = user;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public int getHumor() {
@@ -160,30 +164,7 @@ public class Mood {
 		this.timestamp = timestamp;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(companhia, emocional, falar, fisica, fome, humor, id, ouvir, recado, tedio, timestamp,
-				user);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Mood other = (Mood) obj;
-		return companhia == other.companhia && emocional == other.emocional && falar == other.falar
-				&& fisica == other.fisica && fome == other.fome && humor == other.humor && Objects.equals(id, other.id)
-				&& ouvir == other.ouvir && Objects.equals(recado, other.recado) && tedio == other.tedio
-				&& Objects.equals(timestamp, other.timestamp) && Objects.equals(user, other.user);
-	}
-
 	
-	
-
 	
 	
    
