@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.zetalabs.mood.app.model.Mood;
+import com.zetalabs.mood.app.model.DTO.MoodWithUserDTO;
 import com.zetalabs.mood.app.service.MoodService;
 
 @RestController
@@ -27,6 +28,15 @@ public class MoodController {
 		List<Mood> moodList = moodService.listarTodos();
 		return ResponseEntity.status(HttpStatus.OK).body(moodList);
 	}
+	
+	
+	@GetMapping("/friends")
+	public ResponseEntity<List<MoodWithUserDTO>> listarTodosComNomesDosUsuarios(){
+		List<MoodWithUserDTO> moodList = moodService.listarTodosJoinNomesDosUsuarios();
+		return ResponseEntity.status(HttpStatus.OK).body(moodList);
+	}
+	
+	
 	
 	@PostMapping
 	public ResponseEntity<Mood> salvar(@RequestBody Mood mood){
